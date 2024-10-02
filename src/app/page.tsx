@@ -7,13 +7,13 @@ import { ONCHAINKIT_LINK } from "src/links";
 import { useAccount } from "wagmi";
 import LoginButton from "../components/LoginButton";
 import SignupButton from "../components/SignupButton";
-import LandingPage from "src/components/LandingPage";
+import LandingPage from "src/pages/LandingPage";
 
 export default function Page() {
 	const { address } = useAccount();
 
 	return (
-		<div className='flex h-full w-96 max-w-full flex-col px-1 md:w-[1008px]'>
+		<div className=''>
 			<LandingPage />
 			<Footer />
 		</div>

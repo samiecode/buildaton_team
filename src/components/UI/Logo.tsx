@@ -14,8 +14,7 @@ function Logo() {
 			/>
 
 			<h1 className='text-4xl text-white font-extrabold uppercase'>
-				<span>Block</span>
-				<span className='text-[#030819]'>Trail</span>
+				Lumina
 			</h1>
 		</Link>
 	);
