@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NEXT_PUBLIC_URL } from "../config";
 
-import { Poppins } from "next/font/google";
+import { Orbitron } from "next/font/google";
 
 import "./global.css";
 import "@coinbase/onchainkit/styles.css";
@@ -21,18 +21,17 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-	title: "Onchain App Template",
+	title: "Lumina",
 	description: "Built with OnchainKit",
 	openGraph: {
-		title: "Onchain App Template",
+		title: "Lumina",
 		description: "Built with OnchainKit",
 		images: [`${NEXT_PUBLIC_URL}/vibes/vibes-19.png`],
 	},
 };
 
-const poppins = Poppins({
+const orbitron = Orbitron({
 	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export default function RootLayout({
@@ -42,7 +41,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={`${poppins.className}`}>
+			<body className={`${orbitron.className}`}>
 				<OnchainProviders>{children}</OnchainProviders>
 			</body>
 		</html>

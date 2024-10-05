@@ -6,8 +6,8 @@ export default function Footer() {
 	return (
 		<footer className='w-full bg-[#00229E] text-white py-8 px-4'>
 			<div className='container mx-auto'>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-					<div className='flex flex-col items-center md:items-start'>
+				<div className='grid grid-cols-1 md:grid-cols-4 gap-8 md:px-8'>
+					<div className='flex flex-col md:col-span-2'>
 						<Logo />
 						<p className='mt-4 text-sm'>
 							© {new Date().getFullYear()} lumina. All Rights
@@ -25,7 +25,7 @@ export default function Footer() {
 						</div>
 					</div>
 
-					<div className='flex items-center flex-col md:flex-row border'>
+					<div className='grid grid-cols-2 md:grid-flow-col md:items-center md:gap-8 mt-8 px-2 w-full md:col-span-2'>
 						<div>
 							<h3 className='font-bold mb-4'>Discover</h3>
 							<ul className='space-y-2'>
@@ -64,7 +64,7 @@ export default function Footer() {
 						<FaGlobe size={24} />
 						<span>English</span>
 					</div>
-					<div className='flex space-x-4 mt-4 md:mt-0'>
+					<div className='flex space-x-4 mt-4 md:mt-0 gap-2'>
 						<FaTwitter size={24} />
 						<FaFacebook size={24} />
 						<FaLinkedin size={24} />
