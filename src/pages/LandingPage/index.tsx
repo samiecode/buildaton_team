@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { ReactNode } from "react";
 import { FaAppStore, FaGooglePlay } from "react-icons/fa6";
 
@@ -22,10 +23,10 @@ const ReusableButton: React.FC<ReusableButtonProps> = ({
 const LandingPage: React.FC = (): React.JSX.Element => {
 	return (
 		<main>
-			<section className='bg-white p-4 mb-4'>
-				<div className='px-4 lg:w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 pt-12'>
-					<div className='w-full md:pt-24 md:col-span-2'>
-						<h1 className='text-4xl md:text-6xl font-extrabold text-[#00229E] mb-4'>
+			<section className='bg-white p-'>
+				<div className='px-4 md:w-4/5 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 mb-6'>
+					<div className='w-full md:col-span-2'>
+						<h1 className='text-4xl lg:mt-40 md:text-6xl font-extrabold text-[#00229E] mb-4'>
 							Unlock the Power of Blockchain, One Lesson at a Time
 						</h1>
 						<p className='text-gray-900 mb-4 text-lg md:max-w-[600px] w-11/12 md:text-2xl'>
@@ -39,13 +40,17 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 							Join the revolution. Learn about blockchain today!
 						</p>
 						<div className='w-4/5 flex items-center gap-4 mt-4'>
-							<ReusableButton className='bg-[#00229E] text-white'>
+							<Link
+								href='/courses'
+								className='bg-[#00229E] text-white px-4 py-2 rounded-md'>
 								Explore Courses
-							</ReusableButton>
+							</Link>
 
-							<ReusableButton className='bg-gray-200 text-[#00229E]'>
+							<Link
+								href='/login'
+								className='bg-gray-500 text-white px-4 py-2 rounded-md'>
 								Learn More
-							</ReusableButton>
+							</Link>
 						</div>
 					</div>
 
@@ -56,7 +61,7 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 								alt='Hero Image'
 								width={500}
 								height={500}
-								className='w-96 object-cover'
+								className='w-96 md:w-full object-cover'
 							/>
 						</div>
 					</div>
@@ -64,7 +69,7 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 			</section>
 
 			<section className='bg-gray-100 py-12 px-4 md:px-8 w-full mx-auto'>
-				<div className='lg:w-4/5 mx-auto'>
+				<div className='md:w-4/5 mx-auto'>
 					<h2 className='text-3xl md:text-4xl font-bold text-center mb-8'>
 						Our Courses
 					</h2>
@@ -78,9 +83,6 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 								and hands-on projects will cement your
 								understanding.
 							</p>
-							<ReusableButton className='bg-[#00229E] text-white'>
-								View Courses
-							</ReusableButton>
 						</div>
 
 						<div className='flex items-center justify-center'>
@@ -96,7 +98,7 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 			</section>
 
 			<section className='bg-white py-12 px-4 md:px-8'>
-				<div className='lg:w-4/5 mx-auto'>
+				<div className='md:w-4/5 mx-auto'>
 					<h2 className='text-3xl md:text-4xl font-bold text-center mb-8'>
 						Our Competitions
 					</h2>
@@ -121,10 +123,6 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 									competitions are designed to boost your
 									skills while keeping the excitement high.
 								</p>
-
-								<ReusableButton className='bg-[#00229E] text-white'>
-									Join Competition
-								</ReusableButton>
 							</div>
 						</div>
 					</div>
@@ -132,7 +130,7 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 			</section>
 
 			<section className='bg-gray-100 py-12 px-4 md:px-8'>
-				<div className='lg:w-4/5 mx-auto'>
+				<div className='md:w-4/5 mx-auto'>
 					<h2 className='text-3xl md:text-4xl text-center font-bold mb-8'>
 						Our Leaderboard
 					</h2>
@@ -145,9 +143,6 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 								competitions are designed to test your skills
 								while keeping the excitement high.
 							</p>
-							<ReusableButton className='bg-[#00229E] text-white'>
-								View Leaderboard
-							</ReusableButton>
 						</div>
 
 						<div className='flex items-center justify-center'>
@@ -186,12 +181,11 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 			</section>
 
 			<section className='bg-white py-12 px-4 md:px-8'>
-				<div className='lg:w-4/5 mx-auto'>
+				<div className='md:w-4/5 mx-auto'>
 					<h2 className='text-3xl md:text-4xl font-bold text-center mb-12'>
 						Coming Soon...
 					</h2>
 
-					{/* Discussion Forums */}
 					<div className='mb-12 px-3 grid grid-cols-1 md:grid-cols-2 gap-4'>
 						<div className='flex items-center justify-center w-full'>
 							<Image
@@ -247,9 +241,11 @@ const LandingPage: React.FC = (): React.JSX.Element => {
 					<h2 className='text-2xl md:text-3xl font-bold mb-6'>
 						Take that bold step with Lumina
 					</h2>
-					<button className='bg-white text-[#00229E] font-semibold text-center py-3 px-4 rounded-md focus:ring-2 text-lg'>
+					<Link
+						href='/login'
+						className='bg-white text-[#00229E] font-semibold text-center py-3 px-4 rounded-md focus:ring-2 text-lg'>
 						GET STARTED
-					</button>
+					</Link>
 				</div>
 			</section>
 		</main>
