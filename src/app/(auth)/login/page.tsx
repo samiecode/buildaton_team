@@ -100,7 +100,7 @@ function Login() {
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setEmail(e.target.value)}
 								placeholder='blockchainexample@gmail.com'
-								className='w-full p-2 border rounded'
+								className='w-full p-3 outline-blue-600 border rounded'
 							/>
 						</div>
 
@@ -118,7 +118,7 @@ function Login() {
 									e: React.ChangeEvent<HTMLInputElement>
 								) => setPassword(e.target.value)}
 								placeholder='At least 8 characters'
-								className='w-full p-2 border rounded'
+								className='w-full p-3 outline-blue-600 border rounded'
 							/>
 						</div>
 
@@ -132,13 +132,13 @@ function Login() {
 
 						<button
 							type='submit'
-							className='w-full bg-blue-600 text-white p-2 rounded mb-4'>
+							className='w-full bg-blue-600 text-white p-3 rounded mb-4'>
 							Sign in
 						</button>
 					</form>
 					<div className='text-center mb-4'>or</div>
 
-					<button className='w-full bg-white border p-2 rounded mb-4 flex items-center justify-center'>
+					<button className='w-full bg-white border p-3 rounded mb-4 flex items-center justify-center'>
 						<FcGoogle className='mr-2' />
 						Sign in with Google
 					</button>
