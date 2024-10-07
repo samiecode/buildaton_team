@@ -83,7 +83,7 @@ function SignUp() {
 
 	return (
 		<div className='grid place-items-center w-full min-h-screen bg-gray-100 p-8'>
-			<div className='sm:w-full bg-white md:w-4/5 mx-auto flex items-center shadow-lg rounded-2xl overflow-hidden md:h-4/5'>
+			<div className='sm:w-full bg-white md:w-4/5 mx-auto flex items-center shadow-lg rounded-2xl overflow-hidden md:h-full'>
 				<div className='md:w-1/2 py-8 px-12'>
 					<h1 className='text-3xl font-bold mb-6'>
 						Create an Account
