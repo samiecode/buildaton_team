@@ -1,9 +1,9 @@
-
-import { Orbitron,Poppins } from "next/font/google";
+import { Orbitron, Poppins } from "next/font/google";
 
 export const orbitron = Orbitron({
 	subsets: ["latin"],
 });
 export const poppins = Poppins({
-	weight: ['100', '200', '300', '400','500','600']
-})
+	weight: ["100", "200", "300", "400", "500", "600"],
+	subsets: ["latin"],
+});
