@@ -59,6 +59,8 @@ function Login() {
 		// }
 	}
 
+	// the great one has already shown you his future, but the one who isn't, you can't tell how far he can go
+
 	return (
 		<div className='grid place-items-center w-full min-h-screen bg-gray-100 p-8'>
 			<div className='sm:w-full bg-white md:w-4/5 mx-auto flex items-center shadow-lg md:h-4/5 rounded-2xl overflow-hidden'>
@@ -74,6 +76,7 @@ function Login() {
 							height={20}
 							src='/waving_hand.png'
 							alt='waving hand'
+							unoptimized
 							className='w-12 object-cover'
 						/>
 					</h1>
