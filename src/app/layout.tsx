@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { NEXT_PUBLIC_URL } from "../config";
 
+import { Orbitron } from "next/font/google";
 
 import "./global.css";
 import "@coinbase/onchainkit/styles.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import dynamic from "next/dynamic";
-import { poppins } from "./fonts";
 
 const OnchainProviders = dynamic(
 	() => import("src/components/OnchainProviders"),
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
 	},
 };
 
+const orbitron = Orbitron({
+	subsets: ["latin"],
+});
 
 export default function RootLayout({
 	children,
@@ -38,7 +41,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={`${poppins.className}`}>
+			<body className={`${orbitron.className}`}>
 				<OnchainProviders>{children}</OnchainProviders>
 			</body>
 		</html>

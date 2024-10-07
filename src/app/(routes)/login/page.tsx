@@ -1,32 +1,88 @@
-import React from "react";
+"use client";
+
+import React, { ReactEventHandler, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 
-const LoginUI = () => {
+interface LoginDetails {
+	email: string;
+	password: string;
+}
+
+function Login() {
+	const [email, setEmail] = useState<string>("");
+	const [password, setPassword] = useState<string>("");
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+
+	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+
+		if (!email) {
+			alert("Please enter your registered email");
+			return;
+		}
+
+		if (!password) {
+			alert("Please enter your password");
+			return;
+		}
+
+		if (password.length < 8) {
+			alert("Password must be up to 8 characters");
+			return;
+		}
+
+		const userLoginData: LoginDetails = {
+			email,
+			password,
+		};
+
+		console.log(userLoginData);
+
+		// try {
+		// 	setIsLoading(true);
+		// 	const response = await fetch("https://api.test/login", {
+		// 		method: "POST",
+		// 		body: JSON.stringify(userLoginData),
+		// 		headers: {
+		// 			"Content-Type": "application/json",
+		// 		},
+		// 	});
+
+		// 	if (!response.ok) throw new Error("couldn't complete request");
+		// } catch (error: any) {
+		// 	console.error(error.message);
+		// } finally {
+		// 	setIsLoading(false);
+		// }
+	}
+
 	return (
-		<div className='flex  bg-gray-100 p-4'>
-			<div className='md:block md:w-1/2 relative rounded-[30px] overflow-hidden'>
-				<Image
-					src='/Images/login-img.png'
-          alt='Excited learner'
-          objectFit="cover"
-          fill
-          quality={100}
-          sizes="(max-width: 1200px) 50vw, 33vw"
-					priority
-				/>
-			</div>
-			<div className='md:w-1/2 flex items-center justify-center p-8'>
-				<div className='w-full max-w-md'>
-					<h1 className='text-3xl font-bold mb-6'>Welcome Back!</h1>
+		<div className='grid place-items-center w-full min-h-screen bg-gray-100 p-8'>
+			<div className='sm:w-full bg-white md:w-4/5 mx-auto flex items-center shadow-lg md:h-4/5 rounded-2xl overflow-hidden'>
+				<div className='hidden md:flex w-1/2 items-center justify-center bg-[url("/Images/excited_learner.jpg")] bg-cover bg-no-repeat h-full'>
+					<div className='bg-black/30 hover:bg-black/60 hover:backdrop-blur-sm backdrop-blur-0 transition-all duration-200 min-w-full min-h-full border-red-800'></div>
+				</div>
+
+				<div className='md:w-1/2 py-8 px-12'>
+					<h1 className='text-3xl font-bold mb-6 flex items-end gap-2'>
+						<span>Welcome Back!</span>
+						<Image
+							width={20}
+							height={20}
+							src='/waving_hand.png'
+							alt='waving hand'
+							className='w-12 object-cover'
+						/>
+					</h1>
 					<p className='mb-6'>
 						Take your knowledge on blockchain to a whole new level.
 						Sign in and Get started with your learning experience.
 					</p>
 
-					<form>
+					<form onSubmit={handleSubmit}>
 						<div className='mb-4'>
 							<label
 								htmlFor='email'
@@ -36,8 +92,12 @@ const LoginUI = () => {
 							<input
 								type='email'
 								id='email'
+								value={email}
+								onChange={(
+									e: React.ChangeEvent<HTMLInputElement>
+								) => setEmail(e.target.value)}
 								placeholder='blockchainexample@gmail.com'
-								className='w-full p-2 border rounded outline-blue-700'
+								className='w-full p-2 border rounded'
 							/>
 						</div>
 
@@ -50,8 +110,12 @@ const LoginUI = () => {
 							<input
 								type='password'
 								id='password'
+								value={password}
+								onChange={(
+									e: React.ChangeEvent<HTMLInputElement>
+								) => setPassword(e.target.value)}
 								placeholder='At least 8 characters'
-								className='w-full p-2 border rounded outline-blue-700'
+								className='w-full p-2 border rounded'
 							/>
 						</div>
 
@@ -69,7 +133,6 @@ const LoginUI = () => {
 							Sign in
 						</button>
 					</form>
-
 					<div className='text-center mb-4'>or</div>
 
 					<button className='w-full bg-white border p-2 rounded mb-4 flex items-center justify-center'>
@@ -77,16 +140,11 @@ const LoginUI = () => {
 						Sign in with Google
 					</button>
 
-					<button className='w-full bg-blue-800 text-white p-2 rounded mb-4 flex items-center justify-center'>
-						<FaFacebook className='mr-2' />
-						Sign in with Facebook
-					</button>
-
 					<div className='text-center'>
-						Don't have an account?{" "}
+						Don't have an account?
 						<Link
-							href='/signup'
-							className='text-blue-600'>
+							href='/register'
+							className='text-blue-600 ml-2'>
 							Sign up
 						</Link>
 					</div>
@@ -94,6 +152,6 @@ const LoginUI = () => {
 			</div>
 		</div>
 	);
-};
+}
 
-export default LoginUI;
+export default Login;

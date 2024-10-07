@@ -15,9 +15,7 @@ function Logo() {
 				/>
 			</div>
 
-			<h1 className='text-4xl text-white font-extrabold uppercase'>
-				Lumina
-			</h1>
+			<h1 className='text-4xl font-extrabold uppercase'>Lumina</h1>
 		</Link>
 	);
 }
