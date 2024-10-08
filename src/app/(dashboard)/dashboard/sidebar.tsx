@@ -1,59 +1,77 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
-import { LuLayoutDashboard } from "react-icons/lu";
-import { LuBookMarked } from "react-icons/lu";
-import { LuMedal } from "react-icons/lu";
+
+import {
+	LuBookMarked,
+	LuSettings,
+	LuBell,
+	LuMedal,
+	LuLayoutDashboard,
+	LuLogOut,
+} from "react-icons/lu";
 import { MdOutlineLeaderboard } from "react-icons/md";
-import { LuBell } from "react-icons/lu";
-import { LuSettings } from "react-icons/lu";
 import { SidebarProp } from "src/app/types";
-import { ReactNode } from "react";
-import clsx from "clsx";
-import Link from "next/link";
+import NavLink from "@/components/UI/NavLink";
+import React, { ReactNode } from "react";
+
 const links: SidebarProp[] = [
-  { name: "Dashboard", path: "/dashboard", icon: LuLayoutDashboard },
-  { name: "Courses", path: "/courses", icon: LuLayoutDashboard },
-  { name: "Competitions", path: "/competitions", icon: LuLayoutDashboard },
-  { name: "Leaderboard", path: "/leaderboard", icon: LuLayoutDashboard },
-  { name: "Notifications", path: "/notifications", icon: LuLayoutDashboard },
-  { name: "Settings", path: "/settings", icon: LuLayoutDashboard },
-  { name: "Log Out", path: "/logout", icon: LuLayoutDashboard },
+	{ title: "Dashboard", path: "/dashboard", icon: <LuLayoutDashboard /> },
+	{ title: "Courses", path: "/dashboard/courses", icon: <LuBookMarked /> },
+	{
+		title: "Competitions",
+		path: "/dashboard/competitions",
+		icon: <LuMedal />,
+	},
+	{
+		title: "Leaderboard",
+		path: "/dashboard/leaderboard",
+		icon: <MdOutlineLeaderboard />,
+	},
+	{
+		title: "Notifications",
+		path: "/dashboard/notifications",
+		icon: <LuBell />,
+	},
+	{ title: "Settings", path: "/dashboard/settings", icon: <LuSettings /> },
+	{ title: "Log Out", path: "/dashboard/logout", icon: <LuLogOut /> },
 ];
+
 const Sidebar = () => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const LInkItem: React.FC<SidebarProp> = ({ icon, name, path }): ReactNode => {
-    const LinkIcon = icon;
-    return (
-      <Link
-        className={clsx(
-          "p-4 cursor-pointer hover:bg-blue-700/5 flex justify-start gap-3 items-center ",
-          {
-            " bg-blue-700/5 border-blue-700 border-r-[12px] text-blue-700":
-              pathname === path,
-          }
-        )}
-        href={path}
-      >
-        <LinkIcon />
-        <p className="hidden md:block">{name}</p>
-      </Link>
-    );
-  };
-  return (
-    <div className="w-1/5 shadow-md min-h-screen pb-4">
-      <ul></ul>
-    </div>
-  );
+	return (
+		<aside className='w-[250px] shadow-md h-[calc(100vh-74px)] fixed flex items-start '>
+			<ul className='w-full py-1'>
+				{links.map((link, index) => (
+					<li>
+						<SideBarNavLink
+							path={link.path}
+							title={link.title}
+							icon={link.icon}
+						/>
+					</li>
+				))}
+			</ul>
+		</aside>
+	);
 };
 
 export default Sidebar;
-{
-  /* <li className={`p-4 cursor-pointer hover:bg-blue-700/5 flex justify-start gap-3 items-center ${pathname?.endsWith('/dashboard') && " bg-blue-700/5 border-blue-700 border-r-[12px] text-blue-700"}`} onClick={() => handleClick('./')}><LuLayoutDashboard className="text-xl" />Dashboard</li>
-      <li className={`p-4 cursor-pointer hover:bg-blue-700/5 flex justify-start gap-3 items-center ${pathname?.endsWith('/courses') && " bg-blue-700/5 border-blue-700 border-r-[12px] text-blue-700"}`} onClick={() => handleClick('/dashboard/courses')}><LuBookMarked className="text-xl" />Courses</li>
-      <li className={`p-4 cursor-pointer hover:bg-blue-700/5 flex justify-start gap-3 items-center ${pathname?.endsWith('/competitions') && " bg-blue-700/5 border-blue-700 border-r-[12px] text-blue-700"}`} onClick={() => handleClick('/dashboard/competitions')}><LuMedal className="text-xl" />Competitions</li>
-      <li className={`p-4 cursor-pointer hover:bg-blue-700/5 flex justify-start gap-3 items-center ${pathname?.endsWith('/leaderboard') && " bg-blue-700/5 border-blue-700 border-r-[12px] text-blue-700"}`} onClick={() => handleClick('/dashboard/leaderboard')}><MdOutlineLeaderboard className="text-xl" />Leaderboard</li>
-      <li className={`p-4 cursor-pointer hover:bg-blue-700/5 flex justify-start gap-3 items-center ${pathname?.endsWith('/notifications') && " bg-blue-700/5 border-blue-700 border-r-[12px] text-blue-700"}`} onClick={() => handleClick('/dashboard/notifications')}><LuBell className="text-xl" />Notifications</li>
-      <li className={`p-4 cursor-pointer hover:bg-blue-700/5 flex justify-start gap-3 items-center ${pathname?.endsWith('/settings') && " bg-blue-700/5 border-blue-700 border-r-[12px] text-blue-700"}`} onClick={() => handleClick('/dashboard/settings')}><LuSettings className="text-xl" />Settings
-      </li> */
+
+interface SideBarNavLinkProps {
+	path: string;
+	title: string;
+	icon?: React.ReactNode;
 }
+
+const SideBarNavLink: React.FC<SideBarNavLinkProps> = ({
+	path,
+	title,
+	icon,
+}) => {
+	return (
+		<NavLink
+			to={path}
+			className='px-6 py-4 flex items-center gap-4 bg-white text-gray-900 sidebar-link border-r-8 border-transparent hover:border-[#000D7E] hover:text-[#000D7E] h-20 transition-colors duration-200 hover:bg-[#AEBFFF66]'>
+			{icon && <span className='text-3xl'>{icon}</span>}
+			<span className='text-lg'>{title}</span>
+		</NavLink>
+	);
+};
