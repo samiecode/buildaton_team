@@ -1,5 +1,4 @@
 import { orbitron } from "@/app/fonts";
-import DashBoardLayout from "./layout";
 import CourseCard from "./CourseCard";
 import { CourseProp } from "@/app/types";
 import Premium from "./Premium";
