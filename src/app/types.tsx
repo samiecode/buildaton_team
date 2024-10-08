@@ -12,7 +12,8 @@ export interface DashboardLayoutProps {
 }
 export interface CourseProp {
 	courseID?: string;
-	name: string;
+	coverPhotoUrl?: string;
+	title: string;
 	lessons: number;
 	duration: number;
 	progress: number;

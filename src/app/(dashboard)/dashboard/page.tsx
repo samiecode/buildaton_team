@@ -2,11 +2,13 @@ import { orbitron } from "@/app/fonts";
 import CourseCard from "./_components/CourseCard";
 import { CourseProp } from "@/app/types";
 import Premium from "./_components/Premium";
+import ProgressChart from "./_components/ProgressChart";
 
 const courses: CourseProp[] = [
 	{
 		courseID: "0dh2",
-		name: "Course 1",
+		title: "Course 1",
+		coverPhotoUrl: "/Images/courseImage.png",
 		type: "Basics",
 		lessons: 3,
 		duration: 30,
@@ -14,7 +16,8 @@ const courses: CourseProp[] = [
 	},
 	{
 		courseID: "0de6",
-		name: "Course 2",
+		title: "Course 2",
+		coverPhotoUrl: "/Images/courseImage.png",
 		type: "Wallets",
 		lessons: 4,
 		duration: 40,
@@ -22,33 +25,54 @@ const courses: CourseProp[] = [
 	},
 	{
 		courseID: "w37i",
-		name: "Course 3",
+		title: "Course 3",
+		coverPhotoUrl: "/Images/courseImage.png",
 		type: "Transactions",
 		lessons: 5,
 		duration: 40,
 		progress: 20,
 	},
 ];
+
 const Dashboard = () => {
 	return (
-		<div className='w-full min-h-full p-10'>
-			<h1 className={`${orbitron.className} font-semibold text-2xl`}>
+		<section className='w-full min-h-full p-10'>
+			<h1 className={`${orbitron.className} font-semibold text-2xl mb-4`}>
 				Active Courses
 			</h1>
-			<div className='flex justify-start items-center gap-4'>
-				{courses.map((course, index) => (
-					<CourseCard
-						key={course.courseID || index}
-						lessons={course.lessons}
-						name={course.name}
-						type={course.type}
-						duration={course.duration}
-						progress={course.progress}
-					/>
-				))}
+
+			<div className='flex justify-start items-center gap-4 p-2 mb-6'>
+				{courses.map(
+					(
+						{
+							courseID,
+							lessons,
+							title,
+							type,
+							duration,
+							progress,
+							coverPhotoUrl,
+						},
+						index
+					) => (
+						<CourseCard
+							key={courseID || index}
+							coverPhotoUrl={coverPhotoUrl}
+							lessons={lessons}
+							title={title}
+							type={type}
+							duration={duration}
+							progress={progress}
+						/>
+					)
+				)}
 				<Premium />
 			</div>
-		</div>
+
+			<div className='flex justify-start items-center gap-4 p-2'>
+				<ProgressChart />
+			</div>
+		</section>
 	);
 };
 export default Dashboard;
