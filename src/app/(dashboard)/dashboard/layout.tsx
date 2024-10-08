@@ -7,7 +7,7 @@ const DashBoardLayout: React.FC<DashboardLayoutProps>= ({children}) => {
     <Header />
     <div className="flex w-full min-h-screen">
       <Sidebar/>
-    <div className="bg-gray-100 h-full w-4/5">
+    <div className="bg-gray-100 min-h-full w-4/5">
       {children}</div>
     </div>
 

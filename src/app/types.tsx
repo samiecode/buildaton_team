@@ -5,13 +5,15 @@ export interface InputProps {
   label: string;
   placeholder: string;
   id: string;
-  type: string
+  type: string;
 }
-export interface DashboardLayoutProps{
-  children: ReactNode
+export interface DashboardLayoutProps {
+  children: ReactNode;
 }
-export interface SidebarProp{
-  path: string;
+export interface CourseProp {
   name: string;
-  icon: IconType;
+  lessons: number;
+  duration: number;
+  progress: number;
+  type: string;
 }

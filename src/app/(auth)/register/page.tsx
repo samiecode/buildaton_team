@@ -84,8 +84,8 @@ function SignUp() {
 
   return (
     <div className="grid place-items-center w-full min-h-screen bg-gray-100 p-8">
-      <div className="sm:w-full bg-white md:w-4/5 mx-auto flex items-center shadow-lg rounded-2xl overflow-hidden md:h-full">
-        <div className="md:w-1/2 py-8 px-12">
+      <div className="sm:w-full bg-white md:w-4/5 mx-auto flex justify-between items-center shadow-lg rounded-2xl overflow-hidden md:h-full">
+        <div className="w-full lg:w-1/2 md:w-2/3 py-8 px-12">
           <h1 className="text-3xl font-bold mb-6">Create an Account</h1>
 
           <form onSubmit={handleSubmit} className="w-full">
@@ -208,7 +208,7 @@ function SignUp() {
             </Link>
           </div>
         </div>
-        <div className='hidden md:flex w-1/2 items-center justify-center bg-[url("/Images/excited_learner.jpg")] bg-cover bg-no-repeat h-full'>
+        <div className='hidden md:flex md:w-1/3 lg:w-1/2 items-center justify-center bg-[url("/Images/excited_learner.jpg")] bg-cover bg-no-repeat h-full bg-center'>
           <div className="bg-black/30 hover:bg-black/60 hover:backdrop-blur-sm backdrop-blur-0 transition-all duration-200 min-w-full min-h-full border-red-800"></div>
         </div>
       </div>
