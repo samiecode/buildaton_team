@@ -28,3 +28,9 @@ export interface SidebarProp {
 	icon: ReactNode;
 	// icon: IconType;
 }
+
+// productivity type
+export interface ProductivityData {
+	day: string;
+	hours: number;
+}

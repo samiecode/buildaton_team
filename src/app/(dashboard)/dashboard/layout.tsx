@@ -11,7 +11,7 @@ const DashBoardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
 				<section className='w-[250px] relative'>
 					<Sidebar />
 				</section>
-				<div className='bg-gray-100 h-full w-full p-12'>{children}</div>
+				<div className='bg-[#F5F5F5] h-full w-full p-8'>{children}</div>
 			</main>
 		</div>
 	);
