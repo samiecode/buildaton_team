@@ -13,24 +13,9 @@ body {
 	text-size-adjust: 100%;
 }
 
-a {
-	text-decoration: underline;
-}
-
-svg {
-	display: block;
-	overflow: visible;
-	vertical-align: middle;
-}
-
-ul {
-	padding-inline-start: 0;
-}
-
-/* stylelint-disable-next-line */
-#__next {
-	position: relative;
-	z-index: 0;
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #aebdf3 #ebebeb;
 }
 
 .ockConnectWallet_Container span {

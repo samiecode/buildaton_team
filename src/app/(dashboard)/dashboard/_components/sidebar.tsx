@@ -20,7 +20,7 @@ const Sidebar = () => {
 	const pathname = usePathname();
 
 	return (
-		<aside className='w-[250px] shadow-md h-[calc(100vh-74px)] flex items-start'>
+		<aside className='w-[250px] shadow-md h-[calc(100vh-74px)] flex items-start fixed'>
 			<ul className='w-full py-1'>
 				<Link
 					className={clsx(generalLinkClass, {
