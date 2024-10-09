@@ -70,7 +70,7 @@ const Dashboard = () => {
 			</div>
 
 			<div className='flex justify-start items-center gap-4 p-2'>
-				<ProgressChart />
+				<ProgressChart progressPercentage={85} />
 			</div>
 		</section>
 	);
