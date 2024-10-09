@@ -62,13 +62,13 @@ function Login() {
 	// the great one has already shown you his future, but the one who isn't, you can't tell how far he can go
 
 	return (
-		<div className='grid place-items-center w-full min-h-screen bg-gray-100 p-8'>
-			<div className='sm:w-full bg-white md:w-4/5 mx-auto flex items-center shadow-lg md:h-4/5 rounded-2xl overflow-hidden'>
-				<div className='hidden md:flex w-1/2 items-center justify-center bg-[url("/Images/excited_learner.jpg")] bg-cover bg-no-repeat h-full'>
+		<div className='grid place-items-center w-full min-h-screen bg-gray-100'>
+			<div className='bg-white md:w-[860px] mx-auto flex items-center shadow-lg md:h-[520px] max-h-[640px] rounded-2xl overflow-hidden'>
+				<div className='hidden md:flex w-1/2 items-center justify-center bg-[url("/Images/excited_learner.jpg")] bg-cover bg-no-repeat min-h-full'>
 					<div className='bg-black/30 hover:bg-black/60 hover:backdrop-blur-sm backdrop-blur-0 transition-all duration-200 min-w-full min-h-full border-red-800'></div>
 				</div>
 
-				<div className='md:w-1/2 py-8 px-12'>
+				<div className='md:w-1/2 py-8 px-6'>
 					<h1 className='text-3xl font-bold mb-6 flex items-end gap-2'>
 						<span>Welcome Back!</span>
 						<Image
