@@ -40,7 +40,7 @@ const Sidebar = () => {
                 pathname === "/dashboard/courses",
             }
           )}
-          href={"/dashboard"}
+          href={"/dashboard/courses"}
         >
           <LuBookMarked />
           <p className="hidden md:block">Courses</p>
@@ -53,7 +53,7 @@ const Sidebar = () => {
                 pathname === "/dashboard/competitions",
             }
           )}
-          href={"/dashboard"}
+          href={"/dashboard/competitions"}
         >
           <LuMedal />
           <p className="hidden md:block">Competitions</p>
@@ -163,7 +163,7 @@ const Sidebar = () => {
           )}
           href={"/logout"}
         >
-          <MdOutlineLeaderboard />
+          <LuLogOut />
           <p className="hidden md:block">Logout</p>
         </Link>
       </ul>
