@@ -22,6 +22,7 @@
 		"clsx": "^2.1.1",
 		"moment": "^2.30.1",
 		"next": "^14.2.5",
+		"next-auth": "^5.0.0-beta.22",
 		"onchain-app-template": "file:",
 		"permissionless": "^0.1.26",
 		"react": "^18",

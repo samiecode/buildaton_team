@@ -41,22 +41,22 @@ function Login() {
 
 		console.log(userLoginData);
 
-		// try {
-		// 	setIsLoading(true);
-		// 	const response = await fetch("https://api.test/login", {
-		// 		method: "POST",
-		// 		body: JSON.stringify(userLoginData),
-		// 		headers: {
-		// 			"Content-Type": "application/json",
-		// 		},
-		// 	});
+		try {
+			setIsLoading(true);
+			const response = await fetch("/api/login", {
+				method: "POST",
+				body: JSON.stringify(userLoginData),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
 
-		// 	if (!response.ok) throw new Error("couldn't complete request");
-		// } catch (error: any) {
-		// 	console.error(error.message);
-		// } finally {
-		// 	setIsLoading(false);
-		// }
+			if (!response.ok) throw new Error("couldn't complete request");
+		} catch (error: any) {
+			console.error(error.message);
+		} finally {
+			setIsLoading(false);
+		}
 	}
 
 	// the great one has already shown you his future, but the one who isn't, you can't tell how far he can go
