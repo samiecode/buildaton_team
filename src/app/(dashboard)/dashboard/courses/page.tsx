@@ -4,60 +4,60 @@ import { CourseProp } from "@/app/types";
 
 const courses: CourseProp[] = [
   {
-    name: "Course 1",
+    title: "Course 1",
     type: "Basics",
     lessons: 3,
     duration: 30,
-    size: "large",
+    progress: 45,
     rating: 3,
   },
   {
-    name: "Course 2",
+    title: "Course 2",
     type: "Wallets",
     lessons: 4,
     duration: 40,
-    size: "large",
+    progress: 45,
     rating: 4,
   },
   {
-    name: "Course 3",
+    title: "Course 3",
     type: "Transactions",
     lessons: 5,
     duration: 40,
-    size: "large",
+    progress: 45,
     rating: 5,
   },
   {
-    name: "Course 4",
+    title: "Course 4",
     type: "Basics",
     lessons: 5,
     duration: 20,
     rating: 3,
-    size: "large",
+    progress: 45,
   },
   {
-    name: "Course 5",
+    title: "Course 5",
     type: "Transactions",
     lessons: 5,
     duration: 40,
-    size: "large",
+    progress: 45,
     rating: 3,
   },
   {
-    name: "Course 6",
+    title: "Course 6",
     type: "Wallets",
     lessons: 4,
     duration: 40,
     rating: 4,
-    size: "large",
+    progress: 45,
   },
   {
-    name: "Course 7",
+    title: "Course 7",
     type: "Transactions",
     lessons: 5,
     duration: 40,
     rating: 5,
-    size: "large",
+    progress: 45,
   },
 ];
 const Courses = () => {
@@ -70,12 +70,12 @@ const Courses = () => {
         {courses.map((course, i) => (
           <CourseCard
             key={i}
-            size={course.size}
             lessons={course.lessons}
-            name={course.name}
+            title={course.title}
             type={course.type}
             rating={course.rating}
             duration={course.duration}
+            progress={course.progress}
           />
         ))}
       </div>

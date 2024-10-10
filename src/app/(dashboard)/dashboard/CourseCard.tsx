@@ -2,12 +2,12 @@ import clsx from "clsx";
 import { CourseProp } from "../../types";
 import Rating from "./Rating";
 const CourseCard: React.FC<CourseProp> = ({
-  name,
-  size = "normal",
+  title,
   lessons,
   duration,
   rating,
   type,
+  coverPhotoUrl
 }) => {
   return (
     <div
@@ -18,7 +18,7 @@ const CourseCard: React.FC<CourseProp> = ({
       <div className="my-2 flex flex-row items-center gap-3">
         <div className="rounded-full bg-gray-100 w-[60px] h-[60px] grid items-center"></div>
         <span>
-          <h2 className="text-xl">{name}</h2>
+          <h2 className="text-xl">{title}</h2>
           <p className="text-sm text-gray-500">{lessons} lessons</p>
         </span>
       </div>
