@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import DashboardCard from "./DashboardCard";
 import NotificationItem from "./NotificationItem";
 
@@ -101,14 +101,28 @@ const sortedNotifications: Notification[] = notifications.sort((a, b) =>
 );
 
 function NotificationsTab() {
+	const [currentNotifications, setCurrentNotifications] =
+		useState<Notification[]>(sortedNotifications);
+
+	function handleReadNotification(id: string | number) {
+		if (!id) return;
+
+		setCurrentNotifications((items) =>
+			items.map((item) =>
+				item.id === id ? { ...item, status: "read" } : item
+			)
+		);
+	}
+
 	return (
 		<DashboardCard
 			className='min-w-[370px] w-full h-full max-h-full overflow-y-scroll'
 			title='Notifications'>
-			{sortedNotifications.map((notification) => (
+			{currentNotifications.map((notification) => (
 				<NotificationItem
 					key={notification.id}
 					{...notification}
+					onclick={handleReadNotification}
 				/>
 			))}
 		</DashboardCard>

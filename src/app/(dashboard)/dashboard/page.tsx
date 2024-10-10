@@ -90,7 +90,7 @@ const Dashboard = () => {
 
 			<div className='grid grid-cols-[1fr_1fr_1fr] grid-rows-1 gap-12 mb-10 p-2 h-[270px]'>
 				<ProductivityChart data={productivityData} />
-				<ProgressBarRounded percentage={87} />
+				<ProgressBarRounded percentage={Math.round(46.333)} />
 				<Calendar
 					year={year}
 					month={month}

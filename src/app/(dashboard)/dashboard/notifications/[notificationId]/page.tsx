@@ -1,5 +1,5 @@
 function NotificationDetail() {
-	return <div>notification detailsidebar</div>;
+	return <div>notification details</div>;
 }
 
 export default NotificationDetail;
