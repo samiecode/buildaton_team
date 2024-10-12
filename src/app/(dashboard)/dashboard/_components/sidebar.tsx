@@ -47,7 +47,7 @@ const Sidebar = () => {
 				<Link
 					className={clsx(generalLinkClass, {
 						" bg-[#AEBFFF66] border-[#00229E] border-r-8 text-[#00229E]":
-							pathname === "/dashboard/competitions",
+							pathname?.startsWith("/dashboard/competitions"),
 					})}
 					href={"/dashboard"}>
 					<span className='text-3xl'>

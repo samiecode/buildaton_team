@@ -1,3 +1,5 @@
+import { ethers } from "ethers";
+
 import {
 	parseISO,
 	format,
@@ -18,4 +20,19 @@ export function formatDate(dateString: string): string {
 	}
 
 	return format(date, "dd/MM/y");
+}
+
+// function for resolving basename
+export async function resolveBaseName(baseName: string) {
+	const provider = new ethers.JsonRpcProvider("https://mainnet.base.org");
+
+	const fullName = baseName.endsWith(".base") ? baseName : `${baseName}.base`;
+
+	try {
+		const address = await provider.resolveName(fullName);
+		return address;
+	} catch (error) {
+		console.error("Error resolving Base name:", error);
+		return null;
+	}
 }
