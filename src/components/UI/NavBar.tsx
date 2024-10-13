@@ -47,7 +47,7 @@ const Navigation: React.FC = () => {
 						<div className='relative ml-3 flex gap-2'>
 							{/* <Link
 								href='/login'
-								className='bg-gray-400 py-2 px-4 rounded-lg text-white'>
+								className='bg-[#00229E] hover:bg-[#004fe3] transition-colors duration-300 py-2 px-4 rounded-lg text-white'>
 								Login
 							</Link> */}
                             <WalletWrapper text="Get Started" withWalletAggregator={true}/>{isConnected ? 'Connected': 'Not Connected'}
