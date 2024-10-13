@@ -6,68 +6,93 @@ import Link from "next/link";
 import {FcGoogle} from "react-icons/fc";
 import {FaFacebook} from "react-icons/fa";
 import {signIn} from "next-auth/react";
+import {z} from "zod";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormMessage,
+	FormLabel,
+} from "@/components/UI/form";
+import {Input} from "@/components/UI/input";
 
 interface LoginDetails {
 	email: string;
 	password: string;
 }
 
+const formSchema = z.object({
+	email: z.string().email(),
+	password: z.string().min(8),
+});
+
 function Login() {
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+	});
+
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-
-		if (!email) {
-			alert("Please enter your registered email");
-			return;
-		}
-
-		if (!password) {
-			alert("Please enter your password");
-			return;
-		}
-
-		if (password.length < 8) {
-			alert("Password must be up to 8 characters");
-			return;
-		}
-
-		const userLoginData: LoginDetails = {
-			email,
-			password,
-		};
-
-		console.log(userLoginData);
-
+	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		try {
-			setIsLoading(true);
-			const response = await fetch("/api/login", {
-				method: "POST",
-				body: JSON.stringify(userLoginData),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
-
-			if (!response.ok) throw new Error("couldn't complete request");
-
 			await signIn("credentials", {
 				redirect: true,
-				email: userLoginData.email,
-				password: userLoginData.password,
-				redirectTo: '/dashboard'
+				...values,
+				redirectTo: "/dashboard",
 			});
-
-			
-		} catch (error: any) {
-			console.error(error.message);
-		} finally {
-			setIsLoading(false);
+		} catch (err) {
+			console.error(err);
 		}
-	}
+	};
+
+	// async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+	// 	e.preventDefault();
+
+	// 	if (!email) {
+	// 		alert("Please enter your registered email");
+	// 		return;
+	// 	}
+
+	// 	if (!password) {
+	// 		alert("Please enter your password");
+	// 		return;
+	// 	}
+
+	// 	if (password.length < 8) {
+	// 		alert("Password must be up to 8 characters");
+	// 		return;
+	// 	}
+
+	// 	const userLoginData: LoginDetails = {
+	// 		email,
+	// 		password,
+	// 	};
+
+	// 	console.log(userLoginData);
+
+	// 	try {
+	// 		setIsLoading(true);
+	// 		const response = await fetch("/api/login", {
+	// 			method: "POST",
+	// 			body: JSON.stringify(userLoginData),
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 		});
+
+	// 		if (!response.ok) throw new Error("couldn't complete request");
+
+	// 	} catch (error: any) {
+	// 		console.error(error.message);
+	// 	} finally {
+	// 		setIsLoading(false);
+	// 	}
+	// }
 
 	// the great one has already shown you his future, but the one who isn't, you can't tell how far he can go
 
@@ -78,7 +103,7 @@ function Login() {
 					<div className="bg-black/30 hover:bg-black/60 hover:backdrop-blur-sm backdrop-blur-0 transition-all duration-200 min-w-full min-h-full border-red-800"></div>
 				</div>
 
-				<div className="md:w-1/2 py-8 px-6">
+				<div className="md:w-1/2 py-8 px-6 h-full overflow-y-auto">
 					<h1 className="text-3xl font-bold mb-6 flex items-end gap-2">
 						<span>Welcome Back!</span>
 						<Image
@@ -95,7 +120,64 @@ function Login() {
 						Sign in and Get started with your learning experience.
 					</p>
 
-					<form onSubmit={handleSubmit}>
+					<Form {...form}>
+						<form
+							onSubmit={form.handleSubmit(onSubmit)}
+							className="space-y-4"
+						>
+							<FormField
+								control={form.control}
+								name="email"
+								render={({field}) => (
+									<FormItem>
+										<FormLabel>Email</FormLabel>
+										<FormControl>
+											<Input
+												placeholder="blockchainexample@gmail.com"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="password"
+								render={({field}) => (
+									<FormItem>
+										<FormLabel>Password</FormLabel>
+										<FormControl>
+											<Input
+												placeholder="*******"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<div className="text-right mb-4">
+								<Link
+									href="/forgot-password"
+									className="text-blue-600"
+								>
+									Forgot Password?
+								</Link>
+							</div>
+
+							<button
+								type="submit"
+								className="w-full bg-blue-600 text-white p-3 rounded mb-4"
+							>
+								{form.formState.isSubmitting
+									? "Loading..."
+									: "Login"}
+							</button>
+						</form>
+					</Form>
+
+					{/* <form onSubmit={handleSubmit}>
 						<div className="mb-4">
 							<label htmlFor="email" className="block mb-2">
 								Email
@@ -143,7 +225,7 @@ function Login() {
 						>
 							Sign in
 						</button>
-					</form>
+					</form> */}
 					<div className="text-center mb-4">or</div>
 
 					<button className="w-full bg-white border p-3 rounded mb-4 flex items-center justify-center">
