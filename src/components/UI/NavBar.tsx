@@ -4,6 +4,9 @@ import { usePathname } from "next/navigation";
 import { FaChevronDown } from "react-icons/fa";
 import { FaQuestion } from "react-icons/fa6";
 import SignupButton from "../SignupButton";
+import WalletWrapper from "../WalletWrapper";
+import LoginButton from "../LoginButton";
+import {useAccount} from "wagmi";
 
 interface NavItem {
 	title: string;
@@ -19,6 +22,7 @@ export const navItems: NavItem[] = [
 
 const Navigation: React.FC = () => {
 	const pathname = usePathname();
+    const {isConnected} = useAccount();
 
 	return (
 		<nav className='hidden md:block pr-8'>
@@ -40,12 +44,13 @@ const Navigation: React.FC = () => {
 								</Link>
 							))}
 						</div>
-						<div className='relative ml-3'>
-							<Link
+						<div className='relative ml-3 flex gap-2'>
+							{/* <Link
 								href='/login'
 								className='bg-gray-400 py-2 px-4 rounded-lg text-white'>
 								Login
-							</Link>
+							</Link> */}
+                            <WalletWrapper text="Get Started" withWalletAggregator={true}/>{isConnected ? 'Connected': 'Not Connected'}
 						</div>
 					</div>
 				</div>

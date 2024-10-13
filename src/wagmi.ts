@@ -40,8 +40,7 @@ export function useWagmiConfig() {
       chains: [base, baseSepolia],
       // turn off injected provider discovery
       multiInjectedProviderDiscovery: false,
-      connectors,
-      ssr: true,
+      connectors,      ssr: true,
       transports: {
         [base.id]: http(),
         [baseSepolia.id]: http(),

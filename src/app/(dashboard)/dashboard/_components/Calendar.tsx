@@ -57,20 +57,17 @@ const Calendar: React.FC<CalendarProps> = ({ year, month }) => {
 						.map((_, index) => (
 							<div key={`empty-${index}`} />
 						))}
-					{days.map((day): any => {
-						console.log(day);
-						return (
-							<div
-								key={day.toString()}
-								className={`text-center p-2 rounded-full hover:bg-[#00229E] cursor-pointer hover:text-white transition-colors duration-300 ${
-									isSameDay(day, today)
-										? "bg-[#00229E] text-white"
-										: ""
-								}`}>
-								{format(day, "d")}
-							</div>
-						);
-					})}
+					{days.map((day): any => (
+						<div
+							key={day.toString()}
+							className={`text-center p-2 rounded-full hover:bg-[#00229E] cursor-pointer hover:text-white transition-colors duration-300 ${
+								isSameDay(day, today)
+									? "bg-[#00229E] text-white"
+									: ""
+							}`}>
+							{format(day, "d")}
+						</div>
+					))}
 				</div>
 			</>
 		</DashboardCard>

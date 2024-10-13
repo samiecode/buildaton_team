@@ -51,25 +51,56 @@ const { year, month } = {
 };
 
 const Dashboard = () => {
-  return (
-    <div className="w-full min-h-full p-10">
-      <h1 className={`${orbitron.className} font-semibold text-2xl`}>
-        Active Courses
-      </h1>
-      <div className="flex justify-start items-center gap-4">
-        {courses.map((course) => (
-          <CourseCard
-            lessons={course.lessons}
-            title={course.title}
-            rating={course.rating}
-            type={course.type}
-            duration={course.duration}
-            progress={course.progress}
-          />
-        ))}
-        <Premium />
-      </div>
-    </div>
-  );
+	return (
+		<section className='w-full min-h-full p-10'>
+			<h1 className={`${orbitron.className} font-semibold text-2xl mb-4`}>
+				Active Courses
+			</h1>
+
+			<div className='flex justify-start items-center gap-4 p-2 mb-10'>
+				{courses.map(
+					(
+						{
+							courseID,
+							lessons,
+							title,
+							type,
+							duration,
+							progress,
+							coverPhotoUrl,
+                            rating
+						},
+						index
+					) => (
+						<CourseCard
+							key={courseID || index}
+							coverPhotoUrl={coverPhotoUrl}
+							lessons={lessons}
+							title={title}
+							type={type}
+							duration={duration}
+							progress={progress}
+                            rating={rating}
+						/>
+					)
+				)}
+				<Premium />
+			</div>
+
+			<div className='grid grid-cols-[1fr_1fr_1fr] grid-rows-1 gap-12 mb-10 p-2 h-[270px]'>
+				<ProductivityChart data={productivityData} />
+				<ProgressBarRounded percentage={Math.round(46.333)} />
+				<Calendar
+					year={year}
+					month={month}
+				/>
+			</div>
+
+			<section className='grid grid-cols-[450px_1fr] gap-12 mb-10 p-2 h-[450px]'>
+				<NotificationsTab />
+				<CompetitionsTab />
+			</section>
+		</section>
+	);
 };
 export default Dashboard;
